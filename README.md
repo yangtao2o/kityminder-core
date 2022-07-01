@@ -1,5 +1,4 @@
-KityMinder Core
-==========
+# KityMinder Core
 
 ## 简介
 
@@ -7,10 +6,14 @@ KityMinder 是一款强大的脑图可视化/编辑工具，由百度 FEX 团队
 
 本仓库是 KityMinder 的核心实现部分：
 
-* 包括脑图数据的可视化展示（Json 格式）
-* 包括简单的编辑功能（节点创建、编辑、删除）。更加强大编辑功能的 KityMinder 编辑器请移步 [kityminder-editor](https://github.com/fex-team/kityminder-editor)
-* 不包含第三方格式（FreeMind、XMind、MindManager）的支持，可以加载 [kityminder-protocol](https://github.com/fex-team/kityminder-third-party-protocol) 来扩展第三方格式支持。
-* 不包含文件存储的支持，需要自行实现存储。可参照[百度脑图](https://naotu.baidu.com)中的开源的 fio + 百度网盘方案进行实现。
+- 包括脑图数据的可视化展示（Json 格式）
+- 包括简单的编辑功能（节点创建、编辑、删除）。更加强大编辑功能的 KityMinder 编辑器请移步 [kityminder-editor](https://github.com/fex-team/kityminder-editor)
+- 不包含第三方格式（FreeMind、XMind、MindManager）的支持，可以加载 [kityminder-protocol](https://github.com/fex-team/kityminder-third-party-protocol) 来扩展第三方格式支持。
+- 不包含文件存储的支持，需要自行实现存储。可参照[百度脑图](https://naotu.baidu.com)中的开源的 fio + 百度网盘方案进行实现。
+
+## API 文档
+
+相关文档 API [地址](https://yangtao2o.github.io/kityminder-core/)
 
 ## 使用
 

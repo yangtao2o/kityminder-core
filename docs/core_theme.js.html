@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>core/theme.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="MinderEvent.html">MinderEvent</a></li><li><a href="%25E8%25AE%25BE%25E7%25BD%25AE%25E8%25B5%2584%25E6%25BA%2590%25E7%259A%2584%25E5%2591%25BD%25E4%25BB%25A4.html">设置资源的命令</a></li><li><a href="%25E8%25B5%2584%25E6%25BA%2590%25E6%25B8%25B2%25E6%259F%2593%25E5%2599%25A8.html">资源渲染器</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:preimport">preimport</a></li><li><a href="import,contentchange.html#event:interactchange">interactchange</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_getNextResourceColorIndex">_getNextResourceColorIndex</a></li><li><a href="global.html#align">align</a></li><li><a href="global.html#collapse">collapse</a></li><li><a href="global.html#commands">commands</a></li><li><a href="global.html#constructor">constructor</a></li><li><a href="global.html#decodeData()">decodeData()</a></li><li><a href="global.html#decodeWrap">decodeWrap</a></li><li><a href="global.html#dispatchKeyEvent">dispatchKeyEvent</a></li><li><a href="global.html#doLayout">doLayout</a></li><li><a href="global.html#encodeWrap">encodeWrap</a></li><li><a href="global.html#execCommand()">execCommand()</a></li><li><a href="global.html#expand">expand</a></li><li><a href="global.html#exportData()">exportData()</a></li><li><a href="global.html#exportJson()">exportJson()</a></li><li><a href="global.html#exportNodeMinderNode">exportNode</a></li><li><a href="global.html#getBranchBox">getBranchBox</a></li><li><a href="global.html#getComplex">getComplex</a></li><li><a href="global.html#getGlobalLayoutTransform">getGlobalLayoutTransform</a></li><li><a href="global.html#getGlobalLayoutTransformPreview">getGlobalLayoutTransformPreview</a></li><li><a href="global.html#getHashCode">getHashCode</a></li><li><a href="global.html#getLayout">getLayout</a></li><li><a href="global.html#getLayoutTransform">getLayoutTransform</a></li><li><a href="global.html#getLevel">getLevel</a></li><li><a href="global.html#getNodeStyle">getNodeStyle</a></li><li><a href="global.html#getParent">getParent</a></li><li><a href="global.html#getPosition()">getPosition()</a></li><li><a href="global.html#getResourceColor">getResourceColor</a></li><li><a href="global.html#getRoot">getRoot</a></li><li><a href="global.html#getStyle">getStyle</a></li><li><a href="global.html#getTargetNode()">getTargetNode()</a></li><li><a href="global.html#getText">getText</a></li><li><a href="global.html#getTheme">getTheme</a></li><li><a href="global.html#getTreeBox">getTreeBox</a></li><li><a href="global.html#getType">getType</a></li><li><a href="global.html#getUsedResource">getUsedResource</a></li><li><a href="global.html#importData()">importData()</a></li><li><a href="global.html#importJson()">importJson()</a></li><li><a href="global.html#importNode()">importNode()</a></li><li><a href="global.html#isAncestorOf">isAncestorOf</a></li><li><a href="global.html#isCollapsed">isCollapsed</a></li><li><a href="global.html#isExpanded">isExpanded</a></li><li><a href="global.html#isLeaf">isLeaf</a></li><li><a href="global.html#isRoot">isRoot</a></li><li><a href="global.html#kityEvent">kityEvent</a></li><li><a href="global.html#originEvent">originEvent</a></li><li><a href="global.html#postTraverse">postTraverse</a></li><li><a href="global.html#preTraverse">preTraverse</a></li><li><a href="global.html#queryCommandState()">queryCommandState()</a></li><li><a href="global.html#queryCommandValue()">queryCommandValue()</a></li><li><a href="global.html#removeTransform">removeTransform</a></li><li><a href="global.html#setGlobalLayoutTransform">setGlobalLayoutTransform</a></li><li><a href="global.html#setLayoutTransform">setLayoutTransform</a></li><li><a href="global.html#setText">setText</a></li><li><a href="global.html#stopPropagation()">stopPropagation()</a></li><li><a href="global.html#supportClipboardEvent">supportClipboardEvent</a></li><li><a href="global.html#Text2Children">Text2Children</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#useTheme">useTheme</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">core/theme.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>define(function(require, exports, module) {
+    var kity = require('./kity');
+    var utils = require('./utils');
+    var Minder = require('./minder');
+    var MinderNode = require('./node');
+    var Module = require('./module');
+    var Command = require('./command');
+
+    var cssLikeValueMatcher = {
+        left: function(value) {
+            return 3 in value &amp;&amp; value[3] ||
+                1 in value &amp;&amp; value[1] ||
+                value[0];
+        },
+        right: function(value) {
+            return 1 in value &amp;&amp; value[1] || value[0];
+        },
+        top: function(value) {
+            return value[0];
+        },
+        bottom: function(value) {
+            return 2 in value &amp;&amp; value[2] || value[0];
+        }
+    };
+
+    var _themes = {};
+
+    /**
+     * 注册一个主题
+     *
+     * @param  {String} name  主题的名称
+     * @param  {Plain} theme 主题的样式描述
+     *
+     * @example
+     *     Minder.registerTheme('default', {
+     *         'root-color': 'red',
+     *         'root-stroke': 'none',
+     *         'root-padding': [10, 20]
+     *     });
+     */
+    function register(name, theme) {
+        _themes[name] = theme;
+    }
+    exports.register = register;
+
+    utils.extend(Minder, {
+        getThemeList: function() {
+            return _themes;
+        }
+    });
+
+    kity.extendClass(Minder, {
+
+        /**
+         * 切换脑图实例上的主题
+         * @param  {String} name 要使用的主题的名称
+         */
+        useTheme: function(name) {
+
+            this.setTheme(name);
+            this.refresh(800);
+
+            return true;
+        },
+
+        setTheme: function(name) {
+            if (name &amp;&amp; !_themes[name]) throw new Error('Theme ' + name + ' not exists!');
+            var lastTheme = this._theme;
+            this._theme = name || null;
+            var container = this.getRenderTarget();
+            if (container) {
+                container.classList.remove('km-theme-' + lastTheme);
+                if (name) {
+                    container.classList.add('km-theme-' + name);
+                }
+                container.style.background = this.getStyle('background');
+            }
+            this.fire('themechange', {
+                theme: name
+            });
+            return this;
+        },
+
+        /**
+         * 获取脑图实例上的当前主题
+         * @return {[type]} [description]
+         */
+        getTheme: function(node) {
+            return this._theme || this.getOption('defaultTheme') || 'fresh-blue';
+        },
+
+        getThemeItems: function(node) {
+            var theme = this.getTheme(node);
+            return _themes[this.getTheme(node)];
+        },
+
+        /**
+         * 获得脑图实例上的样式
+         * @param  {String} item 样式名称
+         */
+        getStyle: function(item, node) {
+            var items = this.getThemeItems(node);
+            var segment, dir, selector, value, matcher;
+
+            if (item in items) return items[item];
+
+            // 尝试匹配 CSS 数组形式的值
+            // 比如 item 为 'pading-left'
+            // theme 里有 {'padding': [10, 20]} 的定义，则可以返回 20
+            segment = item.split('-');
+            if (segment.length &lt; 2) return null;
+
+            dir = segment.pop();
+            item = segment.join('-');
+
+            if (item in items) {
+                value = items[item];
+                if (utils.isArray(value) &amp;&amp; (matcher = cssLikeValueMatcher[dir])) {
+                    return matcher(value);
+                }
+                if (!isNaN(value)) return value;
+            }
+
+            return null;
+        },
+
+        /**
+         * 获取指定节点的样式
+         * @param  {String} name 样式名称，可以不加节点类型的前缀
+         */
+        getNodeStyle: function(node, name) {
+            var value = this.getStyle(node.getType() + '-' + name, node);
+            return value !== null ? value : this.getStyle(name, node);
+        }
+    });
+
+    kity.extendClass(MinderNode, {
+        getStyle: function(name) {
+            return this.getMinder().getNodeStyle(this, name);
+        }
+    });
+
+    Module.register('Theme', {
+        defaultOptions: {
+            defaultTheme: 'fresh-blue'
+        },
+        commands: {
+            /**
+             * @command Theme
+             * @description 设置当前脑图的主题
+             * @param {string} name 主题名称
+             *    允许使用的主题可以使用 `kityminder.Minder.getThemeList()` 查询
+             * @state
+             *   0: 始终可用
+             * @return 返回当前的主题名称
+             */
+            'theme': kity.createClass('ThemeCommand', {
+                base: Command,
+
+                execute: function(km, name) {
+                    return km.useTheme(name);
+                },
+
+                queryValue: function(km) {
+                    return km.getTheme() || 'default';
+                }
+            })
+        }
+    });
+
+    Minder.registerInitHook(function() {
+        this.setTheme();
+    });
+
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri Jul 01 2022 18:34:16 GMT+0800 (中国标准时间) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

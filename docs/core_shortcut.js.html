@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>core/shortcut.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="MinderEvent.html">MinderEvent</a></li><li><a href="%25E8%25AE%25BE%25E7%25BD%25AE%25E8%25B5%2584%25E6%25BA%2590%25E7%259A%2584%25E5%2591%25BD%25E4%25BB%25A4.html">设置资源的命令</a></li><li><a href="%25E8%25B5%2584%25E6%25BA%2590%25E6%25B8%25B2%25E6%259F%2593%25E5%2599%25A8.html">资源渲染器</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:preimport">preimport</a></li><li><a href="import,contentchange.html#event:interactchange">interactchange</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_getNextResourceColorIndex">_getNextResourceColorIndex</a></li><li><a href="global.html#align">align</a></li><li><a href="global.html#collapse">collapse</a></li><li><a href="global.html#commands">commands</a></li><li><a href="global.html#constructor">constructor</a></li><li><a href="global.html#decodeData()">decodeData()</a></li><li><a href="global.html#decodeWrap">decodeWrap</a></li><li><a href="global.html#dispatchKeyEvent">dispatchKeyEvent</a></li><li><a href="global.html#doLayout">doLayout</a></li><li><a href="global.html#encodeWrap">encodeWrap</a></li><li><a href="global.html#execCommand()">execCommand()</a></li><li><a href="global.html#expand">expand</a></li><li><a href="global.html#exportData()">exportData()</a></li><li><a href="global.html#exportJson()">exportJson()</a></li><li><a href="global.html#exportNodeMinderNode">exportNode</a></li><li><a href="global.html#getBranchBox">getBranchBox</a></li><li><a href="global.html#getComplex">getComplex</a></li><li><a href="global.html#getGlobalLayoutTransform">getGlobalLayoutTransform</a></li><li><a href="global.html#getGlobalLayoutTransformPreview">getGlobalLayoutTransformPreview</a></li><li><a href="global.html#getHashCode">getHashCode</a></li><li><a href="global.html#getLayout">getLayout</a></li><li><a href="global.html#getLayoutTransform">getLayoutTransform</a></li><li><a href="global.html#getLevel">getLevel</a></li><li><a href="global.html#getNodeStyle">getNodeStyle</a></li><li><a href="global.html#getParent">getParent</a></li><li><a href="global.html#getPosition()">getPosition()</a></li><li><a href="global.html#getResourceColor">getResourceColor</a></li><li><a href="global.html#getRoot">getRoot</a></li><li><a href="global.html#getStyle">getStyle</a></li><li><a href="global.html#getTargetNode()">getTargetNode()</a></li><li><a href="global.html#getText">getText</a></li><li><a href="global.html#getTheme">getTheme</a></li><li><a href="global.html#getTreeBox">getTreeBox</a></li><li><a href="global.html#getType">getType</a></li><li><a href="global.html#getUsedResource">getUsedResource</a></li><li><a href="global.html#importData()">importData()</a></li><li><a href="global.html#importJson()">importJson()</a></li><li><a href="global.html#importNode()">importNode()</a></li><li><a href="global.html#isAncestorOf">isAncestorOf</a></li><li><a href="global.html#isCollapsed">isCollapsed</a></li><li><a href="global.html#isExpanded">isExpanded</a></li><li><a href="global.html#isLeaf">isLeaf</a></li><li><a href="global.html#isRoot">isRoot</a></li><li><a href="global.html#kityEvent">kityEvent</a></li><li><a href="global.html#originEvent">originEvent</a></li><li><a href="global.html#postTraverse">postTraverse</a></li><li><a href="global.html#preTraverse">preTraverse</a></li><li><a href="global.html#queryCommandState()">queryCommandState()</a></li><li><a href="global.html#queryCommandValue()">queryCommandValue()</a></li><li><a href="global.html#removeTransform">removeTransform</a></li><li><a href="global.html#setGlobalLayoutTransform">setGlobalLayoutTransform</a></li><li><a href="global.html#setLayoutTransform">setLayoutTransform</a></li><li><a href="global.html#setText">setText</a></li><li><a href="global.html#stopPropagation()">stopPropagation()</a></li><li><a href="global.html#supportClipboardEvent">supportClipboardEvent</a></li><li><a href="global.html#Text2Children">Text2Children</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#useTheme">useTheme</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">core/shortcut.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileOverview
+ *
+ * 添加快捷键支持
+ *
+ * @author: techird
+ * @copyright: Baidu FEX, 2014
+ */
+
+define(function(require, exports, module) {
+    var kity = require('./kity');
+    var utils = require('./utils');
+    var keymap = require('./keymap');
+    var Minder = require('./minder');
+    var MinderEvent = require('./event');
+
+    /**
+     * 计算包含 meta 键的 keycode
+     *
+     * @param  {String|KeyEvent} unknown
+     */
+    function getMetaKeyCode(unknown) {
+        var CTRL_MASK = 0x1000;
+        var ALT_MASK = 0x2000;
+        var SHIFT_MASK = 0x4000;
+        var metaKeyCode = 0;
+
+        if (typeof(unknown) == 'string') {
+            // unknown as string
+            unknown.toLowerCase().split(/\+\s*/).forEach(function(name) {
+                switch(name) {
+                    case 'ctrl':
+                    case 'cmd':
+                        metaKeyCode |= CTRL_MASK;
+                        break;
+                    case 'alt':
+                        metaKeyCode |= ALT_MASK;
+                        break;
+                    case 'shift':
+                        metaKeyCode |= SHIFT_MASK;
+                        break;
+                    default:
+                        metaKeyCode |= keymap[name];
+                }
+            });
+        } else {
+            // unknown as key event
+            if (unknown.ctrlKey || unknown.metaKey) {
+                metaKeyCode |= CTRL_MASK;
+            }
+            if (unknown.altKey) {
+                metaKeyCode |= ALT_MASK;
+            }
+            if (unknown.shiftKey) {
+                metaKeyCode |= SHIFT_MASK;
+            }
+            metaKeyCode |= unknown.keyCode;
+        }
+
+        return metaKeyCode;
+    }
+    kity.extendClass(MinderEvent, {
+        isShortcutKey: function(keyCombine) {
+            var keyEvent = this.originEvent;
+            if (!keyEvent) return false;
+
+            return getMetaKeyCode(keyCombine) == getMetaKeyCode(keyEvent);
+        }
+    });
+
+    Minder.registerInitHook(function() {
+        this._initShortcutKey();
+    });
+
+    kity.extendClass(Minder, {
+
+        _initShortcutKey: function() {
+            this._bindShortcutKeys();
+        },
+
+        _bindShortcutKeys: function() {
+            var map = this._shortcutKeys = {};
+            var has = 'hasOwnProperty';
+            this.on('keydown', function(e) {
+                for (var keys in map) {
+                    if (!map[has](keys)) continue;
+                    if (e.isShortcutKey(keys)) {
+                        var fn = map[keys];
+                        if (fn.__statusCondition &amp;&amp; fn.__statusCondition != this.getStatus()) return;
+                        fn();
+                        e.preventDefault();
+                    }
+                }
+            });
+        },
+
+        addShortcut: function(keys, fn) {
+            var binds = this._shortcutKeys;
+            keys.split(/\|\s*/).forEach(function(combine) {
+                var parts = combine.split('::');
+                var status;
+                if (parts.length > 1) {
+                    combine = parts[1];
+                    status = parts[0];
+                    fn.__statusCondition = status;
+                }
+                binds[combine] = fn;
+            });
+        },
+
+        addCommandShortcutKeys: function(cmd, keys) {
+            var binds = this._commandShortcutKeys || (this._commandShortcutKeys = {});
+            var obj = {},
+                km = this;
+            if (keys) {
+                obj[cmd] = keys;
+            } else {
+                obj = cmd;
+            }
+
+            var minder = this;
+
+            utils.each(obj, function(keys, command) {
+
+                binds[command] = keys;
+
+                minder.addShortcut(keys, function execCommandByShortcut() {
+                    /**
+                     * 之前判断有问题，由 === 0 改为 !== -1
+                     * @editor Naixor
+                     * @Date 2015-12-2
+                     */
+                    if (minder.queryCommandState(command) !== -1) {
+                        minder.execCommand(command);
+                    }
+                });
+            });
+        },
+
+        getCommandShortcutKey: function(cmd) {
+            var binds = this._commandShortcutKeys;
+            return binds &amp;&amp; binds[cmd] || null;
+        },
+        
+        /**
+         * @Desc: 添加一个判断是否支持原生Clipboard的变量，用于对ctrl + v和ctrl + c的处理
+         * @Editor: Naixor
+         * @Date: 2015.9.20
+         */
+        supportClipboardEvent: (function(window) {
+            return !!window.ClipboardEvent;
+        })(window)
+    });
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri Jul 01 2022 18:34:16 GMT+0800 (中国标准时间) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

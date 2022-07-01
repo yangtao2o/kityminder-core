@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>core/command.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="MinderEvent.html">MinderEvent</a></li><li><a href="%25E8%25AE%25BE%25E7%25BD%25AE%25E8%25B5%2584%25E6%25BA%2590%25E7%259A%2584%25E5%2591%25BD%25E4%25BB%25A4.html">设置资源的命令</a></li><li><a href="%25E8%25B5%2584%25E6%25BA%2590%25E6%25B8%25B2%25E6%259F%2593%25E5%2599%25A8.html">资源渲染器</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:preimport">preimport</a></li><li><a href="import,contentchange.html#event:interactchange">interactchange</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_getNextResourceColorIndex">_getNextResourceColorIndex</a></li><li><a href="global.html#align">align</a></li><li><a href="global.html#collapse">collapse</a></li><li><a href="global.html#commands">commands</a></li><li><a href="global.html#constructor">constructor</a></li><li><a href="global.html#decodeData()">decodeData()</a></li><li><a href="global.html#decodeWrap">decodeWrap</a></li><li><a href="global.html#dispatchKeyEvent">dispatchKeyEvent</a></li><li><a href="global.html#doLayout">doLayout</a></li><li><a href="global.html#encodeWrap">encodeWrap</a></li><li><a href="global.html#execCommand()">execCommand()</a></li><li><a href="global.html#expand">expand</a></li><li><a href="global.html#exportData()">exportData()</a></li><li><a href="global.html#exportJson()">exportJson()</a></li><li><a href="global.html#exportNodeMinderNode">exportNode</a></li><li><a href="global.html#getBranchBox">getBranchBox</a></li><li><a href="global.html#getComplex">getComplex</a></li><li><a href="global.html#getGlobalLayoutTransform">getGlobalLayoutTransform</a></li><li><a href="global.html#getGlobalLayoutTransformPreview">getGlobalLayoutTransformPreview</a></li><li><a href="global.html#getHashCode">getHashCode</a></li><li><a href="global.html#getLayout">getLayout</a></li><li><a href="global.html#getLayoutTransform">getLayoutTransform</a></li><li><a href="global.html#getLevel">getLevel</a></li><li><a href="global.html#getNodeStyle">getNodeStyle</a></li><li><a href="global.html#getParent">getParent</a></li><li><a href="global.html#getPosition()">getPosition()</a></li><li><a href="global.html#getResourceColor">getResourceColor</a></li><li><a href="global.html#getRoot">getRoot</a></li><li><a href="global.html#getStyle">getStyle</a></li><li><a href="global.html#getTargetNode()">getTargetNode()</a></li><li><a href="global.html#getText">getText</a></li><li><a href="global.html#getTheme">getTheme</a></li><li><a href="global.html#getTreeBox">getTreeBox</a></li><li><a href="global.html#getType">getType</a></li><li><a href="global.html#getUsedResource">getUsedResource</a></li><li><a href="global.html#importData()">importData()</a></li><li><a href="global.html#importJson()">importJson()</a></li><li><a href="global.html#importNode()">importNode()</a></li><li><a href="global.html#isAncestorOf">isAncestorOf</a></li><li><a href="global.html#isCollapsed">isCollapsed</a></li><li><a href="global.html#isExpanded">isExpanded</a></li><li><a href="global.html#isLeaf">isLeaf</a></li><li><a href="global.html#isRoot">isRoot</a></li><li><a href="global.html#kityEvent">kityEvent</a></li><li><a href="global.html#originEvent">originEvent</a></li><li><a href="global.html#postTraverse">postTraverse</a></li><li><a href="global.html#preTraverse">preTraverse</a></li><li><a href="global.html#queryCommandState()">queryCommandState()</a></li><li><a href="global.html#queryCommandValue()">queryCommandValue()</a></li><li><a href="global.html#removeTransform">removeTransform</a></li><li><a href="global.html#setGlobalLayoutTransform">setGlobalLayoutTransform</a></li><li><a href="global.html#setLayoutTransform">setLayoutTransform</a></li><li><a href="global.html#setText">setText</a></li><li><a href="global.html#stopPropagation()">stopPropagation()</a></li><li><a href="global.html#supportClipboardEvent">supportClipboardEvent</a></li><li><a href="global.html#Text2Children">Text2Children</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#useTheme">useTheme</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">core/command.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>define(function(require, exports, module) {
+    var kity = require('./kity');
+    var utils = require('./utils');
+    var Minder = require('./minder');
+    var MinderNode = require('./node');
+    var MinderEvent = require('./event');
+
+    var COMMAND_STATE_NORMAL = 0;
+    var COMMAND_STATE_DISABLED = -1;
+    var COMMAND_STATE_ACTIVED = 1;
+
+    /**
+     * 表示一个命令，包含命令的查询及执行
+     */
+    var Command = kity.createClass('Command', {
+        constructor: function() {
+            this._isContentChange = true;
+            this._isSelectionChange = false;
+        },
+
+        execute: function(minder, args) {
+            throw new Error('Not Implement: Command.execute()');
+        },
+
+        setContentChanged: function(val) {
+            this._isContentChange = !!val;
+        },
+
+        isContentChanged: function() {
+            return this._isContentChange;
+        },
+
+        setSelectionChanged: function(val) {
+            this._isSelectionChange = !!val;
+        },
+
+        isSelectionChanged: function() {
+            return this._isContentChange;
+        },
+
+        queryState: function(km) {
+            return COMMAND_STATE_NORMAL;
+        },
+
+        queryValue: function(km) {
+            return 0;
+        },
+
+        isNeedUndo: function() {
+            return true;
+        }
+    });
+
+    Command.STATE_NORMAL = COMMAND_STATE_NORMAL;
+    Command.STATE_ACTIVE = COMMAND_STATE_ACTIVED;
+    Command.STATE_DISABLED = COMMAND_STATE_DISABLED;
+
+    kity.extendClass(Minder, {
+        _getCommand: function(name) {
+            return this._commands[name.toLowerCase()];
+        },
+
+        _queryCommand: function(name, type, args) {
+            var cmd = this._getCommand(name);
+            if (cmd) {
+                var queryCmd = cmd['query' + type];
+                if (queryCmd)
+                    return queryCmd.apply(cmd, [this].concat(args));
+            }
+            return 0;
+        },
+
+        /**
+         * @method queryCommandState()
+         * @for Minder
+         * @description 查询指定命令的状态
+         *
+         * @grammar queryCommandName(name) => {number}
+         *
+         * @param {string} name 要查询的命令名称
+         *
+         * @return {number}
+         *   -1: 命令不存在或命令当前不可用
+         *    0: 命令可用
+         *    1: 命令当前可用并且已经执行过
+         */
+        queryCommandState: function(name) {
+            return this._queryCommand(name, 'State', [].slice.call(arguments, 1));
+        },
+
+        /**
+         * @method queryCommandValue()
+         * @for Minder
+         * @description 查询指定命令当前的执行值
+         *
+         * @grammar queryCommandValue(name) => {any}
+         *
+         * @param {string} name 要查询的命令名称
+         *
+         * @return {any}
+         *    如果命令不存在，返回 undefined
+         *    不同命令具有不同返回值，具体请查看 [Command](command) 章节
+         */
+        queryCommandValue: function(name) {
+            return this._queryCommand(name, 'Value', [].slice.call(arguments, 1));
+        },
+
+        /**
+         * @method execCommand()
+         * @for Minder
+         * @description 执行指定的命令。
+         *
+         * @grammar execCommand(name, args...)
+         *
+         * @param {string} name 要执行的命令名称
+         * @param {argument} args 要传递给命令的其它参数
+         */
+        execCommand: function(name) {
+            if (!name) return null;
+
+            name = name.toLowerCase();
+
+            var cmdArgs = [].slice.call(arguments, 1),
+                cmd, stoped, result, eventParams;
+            var me = this;
+            cmd = this._getCommand(name);
+
+            eventParams = {
+                command: cmd,
+                commandName: name.toLowerCase(),
+                commandArgs: cmdArgs
+            };
+            if (!cmd || !~this.queryCommandState(name)) {
+                return false;
+            }
+
+            if (!this._hasEnterExecCommand) {
+                this._hasEnterExecCommand = true;
+
+                stoped = this._fire(new MinderEvent('beforeExecCommand', eventParams, true));
+
+                if (!stoped) {
+                    this._fire(new MinderEvent('preExecCommand', eventParams, false));
+
+                    result = cmd.execute.apply(cmd, [me].concat(cmdArgs));
+
+                    this._fire(new MinderEvent('execCommand', eventParams, false));
+
+                    if (cmd.isContentChanged()) {
+                        this._firePharse(new MinderEvent('contentchange'));
+                    }
+
+                    this._interactChange();
+                }
+                this._hasEnterExecCommand = false;
+            } else {
+                result = cmd.execute.apply(cmd, [me].concat(cmdArgs));
+
+                if (!this._hasEnterExecCommand) {
+                    this._interactChange();
+                }
+            }
+
+            return result === undefined ? null : result;
+        }
+    });
+
+    module.exports = Command;
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri Jul 01 2022 18:34:16 GMT+0800 (中国标准时间) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

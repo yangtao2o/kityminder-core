@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>protocol/svg.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="MinderEvent.html">MinderEvent</a></li><li><a href="%25E8%25AE%25BE%25E7%25BD%25AE%25E8%25B5%2584%25E6%25BA%2590%25E7%259A%2584%25E5%2591%25BD%25E4%25BB%25A4.html">设置资源的命令</a></li><li><a href="%25E8%25B5%2584%25E6%25BA%2590%25E6%25B8%25B2%25E6%259F%2593%25E5%2599%25A8.html">资源渲染器</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:preimport">preimport</a></li><li><a href="import,contentchange.html#event:interactchange">interactchange</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_getNextResourceColorIndex">_getNextResourceColorIndex</a></li><li><a href="global.html#align">align</a></li><li><a href="global.html#collapse">collapse</a></li><li><a href="global.html#commands">commands</a></li><li><a href="global.html#constructor">constructor</a></li><li><a href="global.html#decodeData()">decodeData()</a></li><li><a href="global.html#decodeWrap">decodeWrap</a></li><li><a href="global.html#dispatchKeyEvent">dispatchKeyEvent</a></li><li><a href="global.html#doLayout">doLayout</a></li><li><a href="global.html#encodeWrap">encodeWrap</a></li><li><a href="global.html#execCommand()">execCommand()</a></li><li><a href="global.html#expand">expand</a></li><li><a href="global.html#exportData()">exportData()</a></li><li><a href="global.html#exportJson()">exportJson()</a></li><li><a href="global.html#exportNodeMinderNode">exportNode</a></li><li><a href="global.html#getBranchBox">getBranchBox</a></li><li><a href="global.html#getComplex">getComplex</a></li><li><a href="global.html#getGlobalLayoutTransform">getGlobalLayoutTransform</a></li><li><a href="global.html#getGlobalLayoutTransformPreview">getGlobalLayoutTransformPreview</a></li><li><a href="global.html#getHashCode">getHashCode</a></li><li><a href="global.html#getLayout">getLayout</a></li><li><a href="global.html#getLayoutTransform">getLayoutTransform</a></li><li><a href="global.html#getLevel">getLevel</a></li><li><a href="global.html#getNodeStyle">getNodeStyle</a></li><li><a href="global.html#getParent">getParent</a></li><li><a href="global.html#getPosition()">getPosition()</a></li><li><a href="global.html#getResourceColor">getResourceColor</a></li><li><a href="global.html#getRoot">getRoot</a></li><li><a href="global.html#getStyle">getStyle</a></li><li><a href="global.html#getTargetNode()">getTargetNode()</a></li><li><a href="global.html#getText">getText</a></li><li><a href="global.html#getTheme">getTheme</a></li><li><a href="global.html#getTreeBox">getTreeBox</a></li><li><a href="global.html#getType">getType</a></li><li><a href="global.html#getUsedResource">getUsedResource</a></li><li><a href="global.html#importData()">importData()</a></li><li><a href="global.html#importJson()">importJson()</a></li><li><a href="global.html#importNode()">importNode()</a></li><li><a href="global.html#isAncestorOf">isAncestorOf</a></li><li><a href="global.html#isCollapsed">isCollapsed</a></li><li><a href="global.html#isExpanded">isExpanded</a></li><li><a href="global.html#isLeaf">isLeaf</a></li><li><a href="global.html#isRoot">isRoot</a></li><li><a href="global.html#kityEvent">kityEvent</a></li><li><a href="global.html#originEvent">originEvent</a></li><li><a href="global.html#postTraverse">postTraverse</a></li><li><a href="global.html#preTraverse">preTraverse</a></li><li><a href="global.html#queryCommandState()">queryCommandState()</a></li><li><a href="global.html#queryCommandValue()">queryCommandValue()</a></li><li><a href="global.html#removeTransform">removeTransform</a></li><li><a href="global.html#setGlobalLayoutTransform">setGlobalLayoutTransform</a></li><li><a href="global.html#setLayoutTransform">setLayoutTransform</a></li><li><a href="global.html#setText">setText</a></li><li><a href="global.html#stopPropagation()">stopPropagation()</a></li><li><a href="global.html#supportClipboardEvent">supportClipboardEvent</a></li><li><a href="global.html#Text2Children">Text2Children</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#useTheme">useTheme</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">protocol/svg.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>define(function(require, exports, module) {
+    var data = require('../core/data');
+
+    /**
+     * 导出svg时删除全部svg元素中的transform
+     * @auth Naixor
+     * @method removeTransform
+     * @param  {[type]}        svgDom [description]
+     * @return {[type]}               [description]
+     */
+     function cleanSVG(svgDom, x, y) {
+             function getTransformToElement(target, source) {
+                 var matrix;
+                 try {
+                     matrix = source.getScreenCTM().inverse();
+                 } catch (e) {
+                     throw new Error("Can not inverse source element' ctm.");
+                 }
+                 return matrix.multiply(target.getScreenCTM());
+             }
+             function dealWithPath(d, dealWithPattern) {
+                 if (!(dealWithPattern instanceof Function)) {
+                     dealWithPattern = function() {};
+                 }
+                 var strArr = [], pattern = [], cache = [];
+                 for (var i = 0, l = d.length; i &lt; l; i++) {
+                     switch (d[i]) {
+                         case "M":
+                         case "L":
+                         case "T":
+                         case "S":
+                         case "A":
+                         case "C":
+                         case "H":
+                         case "V":
+                         case "Q": {
+                             if (cache.length) {
+                                 pattern.push(cache.join(""));
+                                 cache = [];
+                             }
+                             // 脑图的path格式真奇怪...偶尔就给我蹦出来一个"..V123 C..", 那空格几个意思 - -
+                             if (pattern[pattern.length-1] === ",") {
+                                 pattern.pop();
+                             }
+                             if (pattern.length) {
+                                 dealWithPattern(pattern);
+                                 strArr.push(pattern.join(""));
+                                 pattern = [];
+                             }
+                             pattern.push(d[i]);
+                             break;
+                         }
+                         case "Z":
+                         case "z": {
+                             pattern.push(cache.join(""), d[i]);
+                             dealWithPattern(pattern);
+                             strArr.push(pattern.join(""));
+                             cache = [];
+                             pattern = [];
+                             break;
+                         }
+                         case ".":
+                         case "e": {
+                             cache.push(d[i]);
+                             break;
+                         }
+                         case "-": {
+                             if (d[i-1] !== "e") {
+                                 if (cache.length) {
+                                     pattern.push(cache.join(""), ",");
+                                 }
+                                 cache = [];
+                             }
+                             cache.push("-");
+                             break;
+                         }
+                         case " ":
+                         case ",": {
+                             if (cache.length) {
+                                 pattern.push(cache.join(""), ",");
+                                 cache = [];
+                             }
+                             break;
+                         }
+                         default: {
+                             if (/\d/.test(d[i])) {
+                                 cache.push(d[i]);
+                             } else {
+                                 // m a c s q h v l t z情况
+                                 if (cache.length) {
+                                     pattern.push(cache.join(""), d[i]);
+                                     cache = [];
+                                 } else {
+                                     // 脑图的path格式真奇怪...偶尔就给我蹦出来一个"..V123 c..", 那空格几个意思 - -
+                                     if (pattern[pattern.length-1] === ",") {
+                                         pattern.pop();
+                                     }
+                                     pattern.push(d[i]);
+                                 }
+                             }
+                             if (i + 1 === l) {
+                                 if (cache.length) {
+                                     pattern.push(cache.join(""));
+                                 }
+                                 dealWithPattern(pattern);
+                                 strArr.push(pattern.join(""));
+                                 cache = null;
+                                 pattern = null;
+                             }
+                         }
+                     }
+                 }
+                 return strArr.join("");
+             }
+
+             function replaceWithNode(svgNode, parentX, parentY) {
+                 if (!svgNode) {
+                     return;
+                 }
+                 if (svgNode.tagName === "defs") {
+                     return;
+                 }
+                 if (svgNode.getAttribute('fill') === 'transparent') {
+                     svgNode.setAttribute('fill', 'none');
+                 }
+                 if (svgNode.getAttribute('marker-end')) {
+                     svgNode.removeAttribute('marker-end');
+                 }
+                 parentX = parentX || 0;
+                 parentY = parentY || 0;
+                 if (svgNode.getAttribute("transform")) {
+                     var ctm = getTransformToElement(svgNode, svgNode.parentElement);
+                     parentX -= ctm.e;
+                     parentY -= ctm.f;
+                     svgNode.removeAttribute("transform");
+                 }
+                 switch (svgNode.tagName.toLowerCase()) {
+                     case "g":
+                         break;
+                     case "path": {
+                         var d = svgNode.getAttribute("d");
+                         if (d) {
+                             d = dealWithPath(d, function(pattern) {
+                                 switch (pattern[0]) {
+                                     case "V": {
+                                         pattern[1] = +pattern[1] - parentY;
+                                         break;
+                                     }
+                                     case "H": {
+                                         pattern[1] = +pattern[1] - parentX;
+                                         break;
+                                     }
+                                     case "M":
+                                     case "L":
+                                     case "T": {
+                                         pattern[1] = +pattern[1] - parentX;
+                                         pattern[3] = +pattern[3] - parentY;
+                                         break;
+                                     }
+                                     case "Q":
+                                     case "S": {
+                                         pattern[1] = +pattern[1] - parentX;
+                                         pattern[3] = +pattern[3] - parentY;
+                                         pattern[5] = +pattern[5] - parentX;
+                                         pattern[7] = +pattern[7] - parentY;
+                                         break;
+                                     }
+                                     case "A": {
+                                         pattern[11] = +pattern[11] - parentX;
+                                         pattern[13] = +pattern[13] - parentY;
+                                         break;
+                                     }
+                                     case "C": {
+                                         pattern[1] = +pattern[1] - parentX;
+                                         pattern[3] = +pattern[3] - parentY;
+                                         pattern[5] = +pattern[5] - parentX;
+                                         pattern[7] = +pattern[7] - parentY;
+                                         pattern[9] = +pattern[9] - parentX;
+                                         pattern[11] = +pattern[11] - parentY;
+                                     }
+                                 }
+                             });
+                             svgNode.setAttribute("d", d);
+                             svgNode.removeAttribute("transform");
+                         }
+                         return;
+                    }
+                    case "image":
+                    case "text": {
+                        if (parentX &amp;&amp; parentY) {
+                            var x = +svgNode.getAttribute("x") || 0, y = +svgNode.getAttribute("y") || 0;
+                            svgNode.setAttribute("x", x - parentX);
+                            svgNode.setAttribute("y", y - parentY);
+                        }
+                        if (svgNode.getAttribute("dominant-baseline")) {
+                            svgNode.removeAttribute("dominant-baseline");
+                            svgNode.setAttribute("dy", ".8em");
+                        }
+                        svgNode.removeAttribute("transform");
+                        return;
+                     }
+                 }
+                 if (svgNode.children) {
+                     for (var i = 0, l = svgNode.children.length; i &lt; l; i++) {
+                         replaceWithNode(svgNode.children[i], parentX, parentY);
+                     }
+                 }
+             }
+             svgDom.style.visibility = "hidden";
+             replaceWithNode(svgDom, x || 0, y || 0);
+             svgDom.style.visibility = "visible";
+         }
+         data.registerProtocol("svg", module.exports = {
+             fileDescription: "SVG 矢量图",
+             fileExtension: ".svg",
+             mineType: "image/svg+xml",
+             dataType: "text",
+             encode: function(json, minder) {
+                 var paper = minder.getPaper(), paperTransform = paper.shapeNode.getAttribute("transform"), svgXml, svgContainer, svgDom, renderContainer = minder.getRenderContainer(), renderBox = renderContainer.getRenderBox(), transform = renderContainer.getTransform(), width = renderBox.width, height = renderBox.height, padding = 20;
+                 paper.shapeNode.setAttribute("transform", "translate(0.5, 0.5)");
+                 svgXml = paper.container.innerHTML;
+                 paper.shapeNode.setAttribute("transform", paperTransform);
+                 svgContainer = document.createElement("div");
+                 document.body.appendChild(svgContainer);
+                 svgContainer.innerHTML = svgXml;
+                 svgDom = svgContainer.querySelector("svg");
+                 svgDom.setAttribute("width", width + padding * 2 | 0);
+                 svgDom.setAttribute("height", height + padding * 2 | 0);
+                 svgDom.setAttribute("style", "background: " + minder.getStyle("background"));//"font-family: Arial, Microsoft Yahei, Heiti SC; " +
+                 svgDom.setAttribute("viewBox", [ 0, 0, width + padding * 2 | 0, height + padding * 2 | 0 ].join(" "));
+                 tempSvgContainer = document.createElement("div");
+                 cleanSVG(svgDom, renderBox.x - padding | 0, renderBox.y - padding | 0);
+                 document.body.removeChild(svgContainer);
+                 tempSvgContainer.appendChild(svgDom);
+                 // need a xml with width and height
+                 svgXml = tempSvgContainer.innerHTML;
+                 // svg 含有 &amp;nbsp; 符号导出报错 Entity 'nbsp' not defined
+                 svgXml = svgXml.replace(/&amp;nbsp;/g, "&amp;#xa0;");
+                 // svg 含有 &amp;nbsp; 符号导出报错 Entity 'nbsp' not defined
+                 return svgXml;
+             }
+         });
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri Jul 01 2022 18:34:16 GMT+0800 (中国标准时间) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

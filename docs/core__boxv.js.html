@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>core/_boxv.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="MinderEvent.html">MinderEvent</a></li><li><a href="%25E8%25AE%25BE%25E7%25BD%25AE%25E8%25B5%2584%25E6%25BA%2590%25E7%259A%2584%25E5%2591%25BD%25E4%25BB%25A4.html">设置资源的命令</a></li><li><a href="%25E8%25B5%2584%25E6%25BA%2590%25E6%25B8%25B2%25E6%259F%2593%25E5%2599%25A8.html">资源渲染器</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:preimport">preimport</a></li><li><a href="import,contentchange.html#event:interactchange">interactchange</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_getNextResourceColorIndex">_getNextResourceColorIndex</a></li><li><a href="global.html#align">align</a></li><li><a href="global.html#collapse">collapse</a></li><li><a href="global.html#commands">commands</a></li><li><a href="global.html#constructor">constructor</a></li><li><a href="global.html#decodeData()">decodeData()</a></li><li><a href="global.html#decodeWrap">decodeWrap</a></li><li><a href="global.html#dispatchKeyEvent">dispatchKeyEvent</a></li><li><a href="global.html#doLayout">doLayout</a></li><li><a href="global.html#encodeWrap">encodeWrap</a></li><li><a href="global.html#execCommand()">execCommand()</a></li><li><a href="global.html#expand">expand</a></li><li><a href="global.html#exportData()">exportData()</a></li><li><a href="global.html#exportJson()">exportJson()</a></li><li><a href="global.html#exportNodeMinderNode">exportNode</a></li><li><a href="global.html#getBranchBox">getBranchBox</a></li><li><a href="global.html#getComplex">getComplex</a></li><li><a href="global.html#getGlobalLayoutTransform">getGlobalLayoutTransform</a></li><li><a href="global.html#getGlobalLayoutTransformPreview">getGlobalLayoutTransformPreview</a></li><li><a href="global.html#getHashCode">getHashCode</a></li><li><a href="global.html#getLayout">getLayout</a></li><li><a href="global.html#getLayoutTransform">getLayoutTransform</a></li><li><a href="global.html#getLevel">getLevel</a></li><li><a href="global.html#getNodeStyle">getNodeStyle</a></li><li><a href="global.html#getParent">getParent</a></li><li><a href="global.html#getPosition()">getPosition()</a></li><li><a href="global.html#getResourceColor">getResourceColor</a></li><li><a href="global.html#getRoot">getRoot</a></li><li><a href="global.html#getStyle">getStyle</a></li><li><a href="global.html#getTargetNode()">getTargetNode()</a></li><li><a href="global.html#getText">getText</a></li><li><a href="global.html#getTheme">getTheme</a></li><li><a href="global.html#getTreeBox">getTreeBox</a></li><li><a href="global.html#getType">getType</a></li><li><a href="global.html#getUsedResource">getUsedResource</a></li><li><a href="global.html#importData()">importData()</a></li><li><a href="global.html#importJson()">importJson()</a></li><li><a href="global.html#importNode()">importNode()</a></li><li><a href="global.html#isAncestorOf">isAncestorOf</a></li><li><a href="global.html#isCollapsed">isCollapsed</a></li><li><a href="global.html#isExpanded">isExpanded</a></li><li><a href="global.html#isLeaf">isLeaf</a></li><li><a href="global.html#isRoot">isRoot</a></li><li><a href="global.html#kityEvent">kityEvent</a></li><li><a href="global.html#originEvent">originEvent</a></li><li><a href="global.html#postTraverse">postTraverse</a></li><li><a href="global.html#preTraverse">preTraverse</a></li><li><a href="global.html#queryCommandState()">queryCommandState()</a></li><li><a href="global.html#queryCommandValue()">queryCommandValue()</a></li><li><a href="global.html#removeTransform">removeTransform</a></li><li><a href="global.html#setGlobalLayoutTransform">setGlobalLayoutTransform</a></li><li><a href="global.html#setLayoutTransform">setLayoutTransform</a></li><li><a href="global.html#setText">setText</a></li><li><a href="global.html#stopPropagation()">stopPropagation()</a></li><li><a href="global.html#supportClipboardEvent">supportClipboardEvent</a></li><li><a href="global.html#Text2Children">Text2Children</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#useTheme">useTheme</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">core/_boxv.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileOverview
+ *
+ * 调试工具：为 kity.Box 提供一个可视化的渲染
+ *
+ * @author: techird
+ * @copyright: Baidu FEX, 2014
+ */
+
+define(function(require, exports, module) {
+    var kity = require('./kity');
+    var Minder = require('./minder');
+
+    if (location.href.indexOf('boxv') != -1) {
+
+        var vrect;
+
+        Object.defineProperty(kity.Box.prototype, 'visualization', {
+            get: function() {
+                if (!vrect) return null;
+                return vrect.setBox(this);
+            }
+        });
+
+        Minder.registerInitHook(function() {
+            this.on('paperrender', function() {
+                vrect = new kity.Rect();
+                vrect.fill('rgba(200, 200, 200, .5)');
+                vrect.stroke('orange');
+                this.getRenderContainer().addShape(vrect);
+            });
+        });
+    }
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri Jul 01 2022 18:34:16 GMT+0800 (中国标准时间) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
